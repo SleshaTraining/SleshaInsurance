@@ -1,0 +1,41 @@
+version: "3.8"
+services:
+  insurancedb:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=my-secret-pw
+      - MYSQL_DATABASE=sleshainsurance
+    ports:
+      - 3323:3306
+    volumes:
+      - db:/var/lib/mysql    
+  userms:
+    depends_on:
+      - insurancedb
+    build: ./services/userms
+    restart: on-failure
+    ports:
+      - 8888:8080
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.application.name": "dumber_service",
+        "spring.datasource.url"  : "jdbc:mysql://insurancedb:3306/sleshainsurance?useSSL=false",
+        "spring.datasource.username" : "root",
+        "spring.datasource.password" : "my-secret-pw",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+        "spring.jpa.hibernate.ddl-auto" : "update"
+      }'
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
+  sleshainsuranceui:
+    depends_on:
+        - userms
+    build: ./ui/SleshaInsuranceUI
+    restart: on-failure
+    ports:
+        - 4200:80
+volumes:
+  db:
