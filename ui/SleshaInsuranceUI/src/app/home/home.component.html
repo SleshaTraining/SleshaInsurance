@@ -1,16 +1,32 @@
-<div class="col-12 col-md-12 col-lg-8 col-xl-6 mt-5 px-5">
-    <p class="display-1">Affordable Health Insurance Plans</p>
-    <p class="h5 d-xl-block d-none">Shopping for your own coverage? Open Enrollment is here and runs until Jan. 15. Cigna's plans come with $0 preventive care, $0 virtual care (telehealth), personalized digital tools, and 24/7/365 service and support. Let’s find a plan that works for you.
-        See if plans are available in your state. See availability</p>
-    <p class="display-3">Save now with Holiday Discount</p>
-    <div class="row ">
-        <p class="display-2 text-success">{{offerLeft}} to go!!!</p>
+<div class="row px-5 text-light rounded" style="background-image: url(../../assets/family.jpg);" >
+    <div class="col-12 col-md-12 col-lg-8 col-xl-6 mt-5 px-5">
+        <p class="display-1">Affordable Health Insurance Plans</p>
+        <p class="h5 d-xl-block d-none">Shopping for your own coverage? Open Enrollment is here and runs until Jan. 15. Cigna's plans come with $0 preventive care, $0 virtual care (telehealth), personalized digital tools, and 24/7/365 service and support. Let’s find a plan that works for you.
+            See if plans are available in your state. See availability</p>
+        <p class="display-3">Save now with Holiday Discount</p>
+        <div class="row ">
+            <p class="display-2 text-info">{{offerLeft}} left!!!</p>
+        </div>
+        <div class="row mt-5">
+            <button class="btn btn-success col-5 p-5" routerLink="/signup">Sign UP</button>
+            <button class="btn btn-primary mx-5 col-5" routerLink="/login">Login</button>
+        </div>
     </div>
-    <div class="row mt-5">
-        <button class="btn btn-success col-5 p-5">Sign UP</button>
-        <button class="btn btn-primary mx-5 col-5">Login</button>
+    <div class="col-12 col-md-12 col-lg-8 col-xl-6 mt-2 h4">
+        <img src="../assets/family.jpg" class="img-fluid rounded shadow" style="max-width:100%;height:auto"  alt="">
     </div>
 </div>
-<div class="col-12 col-md-12 col-lg-8 col-xl-6 mt-2 h4">
-    <img src="../assets/family.jpg" class="img-fluid rounded shadow" style="max-width:100%;height:auto"  alt="">
+<div class="row justify-content-end mt-5 p-5" style="background-color: rgb(233, 228, 223);">
+    <div class="col-4">
+        <p class="h1">
+            Digital ID Cards – Access Any Time, Any Where
+        </p>
+        <p class="h4">
+            You have instant access to your digital ID card from slesha.com or the mobile app—so it goes everywhere you go. Use it next time you visit the doctor. Visit the Member Guide to learn how.
+        </p>
+    </div>
+    <div class="col-6">
+        <img src="../assets/id.jpg" class="img-fluid rounded shadow" style="max-width:100%;height:auto"  alt="">
+    </div>
 </div>
+<app-why class="row p-5"></app-why>
