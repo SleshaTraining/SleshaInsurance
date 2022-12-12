@@ -1,7 +1,9 @@
 package com.slesha.userms.controller;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.slesha.userms.dto.LoginRequest;
 import com.slesha.userms.entity.User;
 import com.slesha.userms.service.UserService;
 
@@ -42,6 +44,15 @@ public class UserController{
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody LoginRequest req){
+       Optional<User> user=serv.login(req);
+       if(!user.isPresent()){
+         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+       }
+       return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
 }

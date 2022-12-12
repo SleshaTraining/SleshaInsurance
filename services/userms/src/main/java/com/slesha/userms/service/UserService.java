@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.slesha.userms.dto.LoginRequest;
 import com.slesha.userms.entity.User;
 import com.slesha.userms.repo.UserRepository;
 
@@ -27,6 +29,10 @@ public class UserService {
                     x->{x.setPassword("");
                         return x;})
                 .collect(Collectors.toList());
+    }
+
+    public Optional<User> login(LoginRequest req){
+       return repo.findByEmailIdAndPassword(req.getEmailId(), req.getPassword());
     }
 
     
