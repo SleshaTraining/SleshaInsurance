@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.slesha.userms.entity.User;
 import com.slesha.userms.repo.UserRepository;
@@ -18,6 +19,15 @@ public class UserService {
             return "Signed up succesfully";
     }
     public List<User> getUsers(){
-        return repo.findAll();
+        
+        return repo
+                .findAll()
+                .stream()
+                .map(
+                    x->{x.setPassword("");
+                        return x;})
+                .collect(Collectors.toList());
     }
+
+    
 }

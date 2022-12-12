@@ -22,6 +22,7 @@ public class UserController{
 
     @Autowired
     UserService serv;
+    
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody User user){
       try{
