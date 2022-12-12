@@ -3,16 +3,16 @@
         <div class="card p-5">
             <div class="card-title h4 mx-3">Customer Login</div>
             <div class="card-body">
-                <form class="form">
+                <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
                     <div class="form-group">
                         <label for="">Email</label>
-                        <input class="form-control shadow" type="text">
+                        <input formControlName="emailId" class="form-control shadow" type="text">
                     </div>
                     <div class="form-group mt-3">
                         <label for="">Password</label>
-                        <input class="form-control shadow" type="password">
+                        <input formControlName="password" class="form-control shadow" type="password">
                     </div>
-                    <button class="form-control btn btn-primary rounded mt-5 text-light shadow">Login</button>
+                    <button type="submit" class="form-control btn btn-primary rounded mt-5 text-light shadow" [disabled]="loginForm.invalid">Login</button>
                 </form>
                 <b>Dont have an account with us? <a routerLink="/signup">Register</a></b>
             </div>
