@@ -20,7 +20,6 @@ public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer userId;
-
     private String emailId;
     private String userName;
     private String zip;
