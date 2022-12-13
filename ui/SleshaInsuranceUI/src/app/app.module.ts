@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { PlandetailsComponent } from './plandetails/plandetails.component';
+import { SavingComponent } from './saving/saving.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { PlandetailsComponent } from './plandetails/plandetails.component';
     SignupComponent,
     LoginComponent,
     UserhomeComponent,
-    PlandetailsComponent
+    PlandetailsComponent,
+    SavingComponent
   ],
   imports: [
     BrowserModule,
@@ -33,5 +35,5 @@ import { PlandetailsComponent } from './plandetails/plandetails.component';
   ],
   providers: [],
   bootstrap: [AppComponent]
-})
+}) 
 export class AppModule { }

@@ -1,1 +1,144 @@
-<p>plandetails works!</p>
+<div class="row mt-2 p-5">
+  <div class="col-5 mt-3">
+    <div class="card p-3 shadow rounded ">
+      <div class="row justify-content-center">
+        <div *ngIf="curForm==1">
+          <div class="card shadow rounded">
+            <div class="card-title rounded mx-2 h2 bg-primary p-3 text-light">Basic Plan Details</div>
+            <div class="card-body">
+              <form class="form form-inline" [formGroup]="basicForm" >
+             <div class="row">
+              <div class="form-group col-6">
+                <label for="">Age</label>
+                <input class="form-control" type="number" name="" id="">
+              </div>
+              <div class="col-6 mt-3"> 
+                <label for="">Gender</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                  <label class="form-check-label" for="inlineRadio1">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                  <label class="form-check-label" for="inlineRadio2">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                  <label class="form-check-label" for="inlineRadio3">Other</label>
+                </div>
+               </div>
+             </div>
+                <div class="form-check mt-3">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  <label class="form-check-label" for="defaultCheck1">
+                    Frequent Smoker
+                  </label>
+                </div>
+               
+              </form>
+      
+            </div>
+            <div class="card-footer">
+              <button (click)="step1()"  class="btn btn-success p-2 rounded">Next</button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="curForm==2">
+          <div class="card shadow rounded">
+            <div class="card-title rounded mx-2 h2 bg-primary p-3 text-light">Advanced Plan Details</div>
+            <div class="card-body">
+              <div class="card" *ngFor="let type of types; let i=index">
+                <div class="card-title p-2 mx-3 h5">
+                 <input type="radio" value="{{i}}" name="type"> I Expect {{type}} amount of Coverage from this plan.
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <ul>
+                        <li>
+                            {{3-i}} Checkups visits
+                        </li>
+                        <li>
+                          {{3-i}} Specialist visits
+                      </li>
+                      </ul>
+                    </div>
+                    <div class="col-6">
+                      <ul>
+                        <li>
+                            {{6-2*i}} Emergency assistance
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                    
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button (click)="step1()"  class="btn btn-success p-2 rounded">See Quotes</button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="curForm==3">
+          <div class="card">
+            <div class="card-title display-3 mx-3">{{plan.planName}} Quotes</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-4">
+                  <div class="h4">
+                    Monthly Premium
+                  </div>
+                  <div>
+                    {{plan.averagePremium|currency}}
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="h4">
+                    Deducatble
+                  </div>
+                  <div>
+                    {{plan.maximumCoverage*0.1|currency}}
+                  </div>
+                    
+                </div>
+                <div class="col-4">
+                  <div class="h4">
+                    Features
+                  </div>
+                  <div>
+                    <ul>
+                      <li>
+                        No charges after deductable
+                      </li>
+                      <li>
+                        Specalist visits
+                      </li>
+                      <li>
+                        Out of pocket max
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn rounded p-2 btn-success">Enroll</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+  <div class="col-7">
+    <app-saving>
+    </app-saving>
+  </div>
+</div>
+
+
+<app-why>
+</app-why>
