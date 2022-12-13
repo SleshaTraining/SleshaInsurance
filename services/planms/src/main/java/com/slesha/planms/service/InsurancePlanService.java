@@ -1,6 +1,7 @@
 package com.slesha.planms.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.slesha.planms.entity.InsurancePlan;
 import com.slesha.planms.repo.InsurancePlanRepo;
@@ -21,6 +22,9 @@ public class InsurancePlanService {
 
     public List<InsurancePlan> getPlans(){
         return repo.findAll();
+    }
+    public Optional<InsurancePlan> getPlan(Integer id){
+        return repo.findById(id);
     }
 
     
