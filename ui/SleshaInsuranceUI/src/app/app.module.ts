@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { UserhomeComponent } from './userhome/userhome.component';
+import { PlandetailsComponent } from './plandetails/plandetails.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { UserhomeComponent } from './userhome/userhome.component';
     FooterComponent,
     SignupComponent,
     LoginComponent,
-    UserhomeComponent
+    UserhomeComponent,
+    PlandetailsComponent
   ],
   imports: [
     BrowserModule,
