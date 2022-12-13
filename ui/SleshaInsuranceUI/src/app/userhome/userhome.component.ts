@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserhomeService } from './userhome.service';
 
 @Component({
   selector: 'app-userhome',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserhomeComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private service:UserhomeService) { }
+  plans:any=[];
   ngOnInit(): void {
+    this.service.getPlans().subscribe(res=>{
+      this.plans=res;
+      this.plans.forEach((x:any)=>{x.img="../../assets/"+x.planId+'.jpg'});
+    })
   }
 
 }
