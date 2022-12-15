@@ -34,12 +34,12 @@ export class PlandetailsComponent implements OnInit {
     })
 
     this.basicForm=this.fb.group({
-        'age':['',[],null],
-        'gender':['',[],null],
+        'age':['',[Validators.required],null],
+        'gender':['',[Validators.required],null],
         'smoke':['',[],null]
     })
     this.advancedForm=this.fb.group({
-      'type':['',[],null]
+      'type':['',[Validators.required],null]
     })
 
   }
