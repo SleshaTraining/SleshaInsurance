@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-plandetails',
@@ -16,7 +17,7 @@ export class PlandetailsComponent implements OnInit {
   basicForm=new FormGroup({});
   advancedForm=new FormGroup({});
   types=['High','Medium','Low']
-  constructor(private http:HttpClient,private router:ActivatedRoute,private fb:FormBuilder) { }
+  constructor(private http:HttpClient,private router:ActivatedRoute,private fb:FormBuilder,private apServ:AppService) { }
   
   isLinear = false;
   ngOnInit(): void {
@@ -46,6 +47,9 @@ export class PlandetailsComponent implements OnInit {
 
   step1(){
     this.curForm+=1;
+    this.apServ.userLoggedIn.subscribe(res=>{
+      console.log(res);
+    })
   }
 
 }

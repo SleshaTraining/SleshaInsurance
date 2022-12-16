@@ -47,33 +47,35 @@
           <div class="card shadow rounded">
             <div class="card-title rounded mx-2 h2 bg-primary p-3 text-light">Advanced Plan Details</div>
             <div class="card-body">
-              <div class="card" *ngFor="let type of types; let i=index">
-                <div class="card-title p-2 mx-3 h5">
-                 <input type="radio" value="{{i}}" name="type"> I Expect {{type}} amount of Coverage from this plan.
-                </div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-6">
-                      <ul>
-                        <li>
-                            {{3-i}} Checkups visits
-                        </li>
-                        <li>
-                          {{3-i}} Specialist visits
-                      </li>
-                      </ul>
-                    </div>
-                    <div class="col-6">
-                      <ul>
-                        <li>
-                            {{6-2*i}} Emergency assistance
-                        </li>
-                      </ul>
-                    </div>
+              <form [formGroup]="advancedForm">
+                <div class="card" *ngFor="let type of types; let i=index">
+                  <div class="card-title p-2 mx-3 h5">
+                   <input formControlName="type" type="radio"  value="{{i}}" name="type"> I Expect {{type}} amount of Coverage from this plan.
                   </div>
-                    
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-6">
+                        <ul>
+                          <li>
+                              {{3-i}} Checkups visits
+                          </li>
+                          <li>
+                            {{3-i}} Specialist visits
+                        </li>
+                        </ul>
+                      </div>
+                      <div class="col-6">
+                        <ul>
+                          <li>
+                              {{6-2*i}} Emergency assistance
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                      
+                  </div>
                 </div>
-              </div>
+              </form>
             </div>
             <div class="card-footer">
               <button (click)="step1()" [disabled]="advancedForm.invalid"  class="btn btn-success p-2 rounded">See Quotes</button>
