@@ -47,9 +47,18 @@ export class PlandetailsComponent implements OnInit {
 
   step1(){
     this.curForm+=1;
-    this.apServ.userLoggedIn.subscribe(res=>{
-      console.log(res);
-    })
+    if(this.curForm==3){
+      this.apServ.userLoggedIn.subscribe(email=>{
+          let req:any={}
+          req.emailId=email;
+          req.age=this.basicForm.value.age;
+          req.gender=this.basicForm.value.gender;
+          req.smoke=this.basicForm.value.smoke;
+          req.type=this.advancedForm.value.type;
+          console.log(req);
+
+      })
+    }
   }
 
 }
