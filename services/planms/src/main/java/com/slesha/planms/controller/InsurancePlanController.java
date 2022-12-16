@@ -49,5 +49,9 @@ public class InsurancePlanController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
      
     }
+    @PostMapping("/enroll")
+    public void enrollInPlan(){
+            
+    }
     
 }
