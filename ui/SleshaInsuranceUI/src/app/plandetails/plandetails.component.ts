@@ -49,7 +49,7 @@ export class PlandetailsComponent implements OnInit {
 
   step1(){
     this.curForm+=1;
-    if(this.curForm==3){
+    if(this.curForm==4){
       this.apServ.userLoggedIn.subscribe(email=>{
           let req:any={}
           req.emailId=email;
