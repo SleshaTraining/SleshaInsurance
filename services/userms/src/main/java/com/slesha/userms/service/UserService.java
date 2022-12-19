@@ -34,6 +34,10 @@ public class UserService {
     public Optional<User> login(LoginRequest req){
        return repo.findByEmailIdAndPassword(req.getEmailId(), req.getPassword());
     }
+    public Optional<User> getUser(String emailId){
+        return repo.findByEmailId(emailId);
+     }
+
 
     
 }

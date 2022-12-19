@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,6 +48,15 @@ public class UserController{
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/{emailId}")
+    public ResponseEntity<User> getUser(@PathVariable String emailId){
+      Optional<User> user=serv.getUser(emailId);
+      if(!user.isPresent()){
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+      }
+      return new ResponseEntity<>(user.get(),HttpStatus.ACCEPTED);
+   }
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody LoginRequest req){

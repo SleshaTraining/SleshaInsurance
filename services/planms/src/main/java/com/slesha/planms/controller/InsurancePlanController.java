@@ -3,6 +3,7 @@ package com.slesha.planms.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.slesha.planms.dto.EnrollRequest;
 import com.slesha.planms.entity.InsurancePlan;
 import com.slesha.planms.service.InsurancePlanService;
 
@@ -50,7 +51,11 @@ public class InsurancePlanController {
      
     }
     @PostMapping("/enroll")
-    public void enrollInPlan(){
+    public ResponseEntity<String> enrollInPlan(@RequestBody EnrollRequest req){
+
+        System.out.println(req);
+        service.enroll(req);
+        return new ResponseEntity<>("Enrolled Successfully",HttpStatus.CREATED);
             
     }
     

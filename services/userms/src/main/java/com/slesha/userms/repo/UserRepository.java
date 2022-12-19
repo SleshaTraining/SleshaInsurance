@@ -9,4 +9,5 @@ import com.slesha.userms.entity.User;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
     public Optional<User> findByEmailIdAndPassword(String emailId,String password);
+    public Optional<User> findByEmailId(String emailId);
 }

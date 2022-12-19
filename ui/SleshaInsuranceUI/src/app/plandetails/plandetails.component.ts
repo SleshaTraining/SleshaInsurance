@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { AppService } from '../app.service';
+import { PlandetailsService } from './plandetails.service';
 
 @Component({
   selector: 'app-plandetails',
@@ -17,7 +18,8 @@ export class PlandetailsComponent implements OnInit {
   basicForm=new FormGroup({});
   advancedForm=new FormGroup({});
   types=['High','Medium','Low']
-  constructor(private http:HttpClient,private router:ActivatedRoute,private fb:FormBuilder,private apServ:AppService) { }
+  msg='';
+  constructor(private service:PlandetailsService,private http:HttpClient,private router:ActivatedRoute,private fb:FormBuilder,private apServ:AppService) { }
   
   isLinear = false;
   ngOnInit(): void {
@@ -55,8 +57,10 @@ export class PlandetailsComponent implements OnInit {
           req.gender=this.basicForm.value.gender;
           req.smoke=this.basicForm.value.smoke;
           req.type=this.advancedForm.value.type;
-          console.log(req);
-
+          req.planId=this.plan.planId;
+          this.service.enroll(req).subscribe(res=>{
+            this.msg=res;
+          },err=>{})
       })
     }
   }
