@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private apServ:AppService) { }
+  loggedIn:Boolean=false;
   ngOnInit(): void {
+
+    this.apServ.userLoggedIn.subscribe(res=>{
+      if(res!=''){
+        this.loggedIn=true;
+      }
+    })
   }
 
 }

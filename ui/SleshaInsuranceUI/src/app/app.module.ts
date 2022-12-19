@@ -14,6 +14,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { PlandetailsComponent } from './plandetails/plandetails.component';
 import { SavingComponent } from './saving/saving.component';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { SavingComponent } from './saving/saving.component';
     LoginComponent,
     UserhomeComponent,
     PlandetailsComponent,
-    SavingComponent
+    SavingComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
