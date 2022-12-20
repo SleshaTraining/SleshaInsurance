@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../app.service';
 import { ProfileService } from './profile.service';
 
 @Component({
@@ -8,11 +9,18 @@ import { ProfileService } from './profile.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private proService:ProfileService) { }
-
+  constructor(private proService:ProfileService,private apServ:AppService) { }
+  plans:any=[];
   ngOnInit(): void {
+    this.apServ.userLoggedIn.subscribe(res=>{
+      if(res!=''){
+        this.proService.getUserPlans(res).subscribe(resp=>{
+          this.plans=resp;
+          console.log(this.plans);
+        },err=>{})
+      }
+    })
     
-    this.proService.getUserPlans()
   }
 
 }
