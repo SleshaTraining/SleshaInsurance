@@ -1,1 +1,87 @@
-<p>profile works!</p>
+<div class="row mt-3" *ngIf="plans.length>0">
+    <div class="card shadow p-2 rounded">
+        <div class="card-title display-2">
+            {{plans[0].user.userName}}
+        </div>
+        <div class="card-body">
+            <div>{{plans[0].user.emailId}}</div>
+            <div>{{plans[0].user.phone}}</div>
+            <div>{{totalCost|currency}}</div>
+        </div>
+    </div>
+</div>
+<div class="row p-3" >
+<div class="card col-5 shadow p-2 mx-2" *ngFor="let plan of plans">
+    <div class="card-title display-3">
+        {{plan.plan.planName}}
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                Age:
+                            </td>
+                            <td>
+                                {{plan.age}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Gender:
+                            </td>
+                            <td>
+                                {{plan.gender}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Premium:
+                            </td>
+                            <td>
+                                {{plan.plan.averagePremium|currency}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                Area:
+                            </td>
+                            <td>
+                                {{plan.plan.planArea}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Type:
+                            </td>
+                            <td>
+                                {{plan.type}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Coverage:
+                            </td>
+                            <td>
+                                {{plan.plan.maximumCoverage|currency}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+    <div class="card-footer">
+
+    </div>
+</div>
+</div>

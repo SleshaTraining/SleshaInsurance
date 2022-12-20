@@ -9,14 +9,19 @@ import { ProfileService } from './profile.service';
 })
 export class ProfileComponent implements OnInit {
 
+  totalCost:number=0;
   constructor(private proService:ProfileService,private apServ:AppService) { }
   plans:any=[];
   ngOnInit(): void {
     this.apServ.userLoggedIn.subscribe(res=>{
       if(res!=''){
-        this.proService.getUserPlans(res).subscribe(resp=>{
+        this.proService.getUserPlans(res).subscribe((resp)=>{
           this.plans=resp;
           console.log(this.plans);
+          this.totalCost=this.plans.reduce(
+            (accumulator:number, currentValue:any) => accumulator + currentValue.plan.averagePremium,
+            0
+          );
         },err=>{})
       }
     })
