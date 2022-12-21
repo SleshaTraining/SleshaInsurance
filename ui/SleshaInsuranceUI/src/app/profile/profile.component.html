@@ -1,12 +1,20 @@
 <div class="row mt-3" *ngIf="plans.length>0">
-    <div class="card shadow p-2 rounded">
+    <div class="card col-5 shadow p-2 rounded">
         <div class="card-title display-2">
-            {{plans[0].user.userName}}
+            <b>Username:</b>{{plans[0].user.userName}}
         </div>
         <div class="card-body">
-            <div>{{plans[0].user.emailId}}</div>
-            <div>{{plans[0].user.phone}}</div>
-            <div>{{totalCost|currency}}</div>
+            <div><b>Email:</b> {{plans[0].user.emailId}}</div>
+            <div><b>Phone:</b>{{plans[0].user.phone}}</div>
+            <div><b>Total Due:</b>{{totalCost|currency}}</div>
+        </div>
+    </div>
+    <div class="card shadow col-3 p-5">
+        <div class="display-5">
+            Refferal Code
+        </div>
+        <div>
+            {{'inv'+plans[0].user.userName+'__'+plans[0].user.userId}}
         </div>
     </div>
 </div>
