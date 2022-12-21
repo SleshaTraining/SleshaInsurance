@@ -12,6 +12,14 @@ services:
       - .mysql:/var/lib/mysql
     networks:
       - sleshainsnetwork
+  rediscache:
+    container_name: rediscache
+    depends_on:
+      - insurancedb
+    build: ./redis
+    restart: on-failure
+    ports:
+      - 2222:6379
   userms:
     container_name: userms
     depends_on:
