@@ -11,6 +11,8 @@ import com.slesha.planms.repo.InsurancePlanRepo;
 import com.slesha.planms.repo.UserPlanRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -33,6 +35,7 @@ public class InsurancePlanService {
         repo.save(plan);
     }
 
+    @Cacheable(value = "plan",key = "'all'")
     public List<InsurancePlan> getPlans(){
         return repo.findAll();
     }
@@ -47,7 +50,8 @@ public class InsurancePlanService {
         }
         return Optional.ofNullable(null);
     }
-    public void enroll(EnrollRequest req){
+    
+    public List<UserPlan> enroll(EnrollRequest req){
             Optional<User> user=getUser(req.getEmailId());
             Optional<InsurancePlan> plan=getPlan(req.getPlanId());
             if(!user.isPresent() || !plan.isPresent()){
@@ -62,6 +66,8 @@ public class InsurancePlanService {
             up.setPlan(plan.get());
             up.setType(req.getType());
             upRepo.save(up);
+            upRepo.flush();
+            return upRepo.findByEmailId(up.getUser().getEmailId());
             
 
     }

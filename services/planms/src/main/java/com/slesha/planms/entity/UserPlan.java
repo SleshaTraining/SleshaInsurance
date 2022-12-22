@@ -1,5 +1,7 @@
 package com.slesha.planms.entity;
 
+import java.io.Serializable;
+
 import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +18,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserPlan {
+public class UserPlan implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -20,6 +20,8 @@ services:
     restart: on-failure
     ports:
       - 2222:6379
+    networks:
+      - sleshainsnetwork
   userms:
     container_name: userms
     depends_on:
@@ -55,7 +57,11 @@ services:
         "spring.datasource.username" : "root",
         "spring.datasource.password" : "my-secret-pw",
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-        "spring.jpa.hibernate.ddl-auto" : "update"}'
+        "spring.jpa.hibernate.ddl-auto" : "update",
+        "spring.cache.type":"redis",
+        "spring.redis.host":"rediscache",
+        "spring.redis.port":"6379",
+        "configs:spring.cache.cache-names":"plan, userPlan"}'
     volumes:
       - .m2:/root/.m2
     networks:
