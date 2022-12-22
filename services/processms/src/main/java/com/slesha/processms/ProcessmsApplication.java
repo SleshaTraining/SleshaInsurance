@@ -12,12 +12,12 @@ public class ProcessmsApplication {
 	}
 	@KafkaListener(topics = "enroll", groupId = "group-id")
 	public void enrollListen(String message) {
-   		System.out.println("Received Messasge in group - group-id: " + message);
+   		System.out.println("Received Messasge in enroll - group-id: " + message);
 	}
 
 	@KafkaListener(topics = "login", groupId = "group-id")
 	public void loginListen(String message) {
-   		System.out.println("Received Messasge in group - group-id: " + message);
+   		System.out.println("Received Messasge in login - group-id: " + message);
 	}
 
 }
