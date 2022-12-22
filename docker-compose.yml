@@ -88,6 +88,26 @@ services:
       - .m2:/root/.m2
     networks:
       - sleshainsnetwork
+  processms:
+    container_name: processms
+    depends_on:
+      - planms
+    build: ./services/processms
+    restart: on-failure
+    ports:
+      - 6666:8080
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.application.name": "processms",
+        "spring.datasource.url"  : "jdbc:mysql://insurancedb:3306/sleshainsurance?useSSL=false",
+        "spring.datasource.username" : "root",
+        "spring.datasource.password" : "my-secret-pw",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+        "spring.jpa.hibernate.ddl-auto" : "update"}'
+    volumes:
+      - .m2:/root/.m2
+    networks:
+      - sleshainsnetwork
   sleshainsuranceui:
     container_name: ui
     depends_on:
