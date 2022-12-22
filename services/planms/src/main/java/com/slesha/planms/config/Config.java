@@ -26,7 +26,6 @@ public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) 
             .serializeValuesWith(jsonSerializer).disableCachingNullValues().entryTtl(Duration.ofMinutes(1));
     RedisCacheManager manager=RedisCacheManager.RedisCacheManagerBuilder.fromConnectionFactory(redisConnectionFactory)
     .cacheDefaults(config).build();
-    
     return manager;
 
 }
