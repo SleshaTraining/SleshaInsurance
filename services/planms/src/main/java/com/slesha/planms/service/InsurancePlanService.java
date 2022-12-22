@@ -15,6 +15,7 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -29,6 +30,9 @@ public class InsurancePlanService {
 
     @Autowired
     RestTemplate template;
+
+    @Autowired
+    KafkaTemplate<String,String> kafkaTemplate;
 
 
     public void addPlan(InsurancePlan plan){
@@ -67,6 +71,7 @@ public class InsurancePlanService {
             up.setType(req.getType());
             upRepo.save(up);
             upRepo.flush();
+            kafkaTemplate.send("enroll",req.toString());
             return upRepo.findByEmailId(up.getUser().getEmailId());
             
 
