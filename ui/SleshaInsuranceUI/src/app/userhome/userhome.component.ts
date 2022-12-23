@@ -15,7 +15,12 @@ export class UserhomeComponent implements OnInit {
   ngOnInit(): void {
     this.service.getPlans().subscribe(res=>{
       this.plans=res;
-      this.plans.forEach((x:any)=>{x.img="../../assets/"+x.planId+'.jpg'});
+      
+      this.plans.forEach((x:any)=>{
+        let img=""
+        x.planName.split(" ").forEach((x:string)=>{img+=x.substring(0,2)});
+        
+        x.img="../../assets/"+img+'.jpg';});
     })
     this.apService.userLoggedIn.subscribe(res=>{
       if(res==''){
