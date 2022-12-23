@@ -1,6 +1,7 @@
 package com.slesha.userms.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,9 @@ import com.slesha.userms.repo.UserRepository;
 public class UserService {
     @Autowired
     UserRepository repo;
+
+    @Autowired
+    KafkaTemplate<String,String> template;
 
     public String signup(User user){
             repo.save(user);
@@ -32,6 +36,7 @@ public class UserService {
     }
 
     public Optional<User> login(LoginRequest req){
+        template.send("login",req.getEmailId());
        return repo.findByEmailIdAndPassword(req.getEmailId(), req.getPassword());
     }
     public Optional<User> getUser(String emailId){
