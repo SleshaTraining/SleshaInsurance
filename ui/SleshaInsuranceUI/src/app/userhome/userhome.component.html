@@ -1,19 +1,26 @@
 <div class="row mt-3 p-5">
-    <div class="col-3 mt-3" *ngFor="let plan of plans">
+    <div class="col-4 mt-3" *ngFor="let plan of plans">
         <div class="card p-3 shadow rounded ">
             <img class="card-img-top" [src]="plan.img" alt="Card image cap">
-            <div class="card-title p-2 display-2">
+            <div class="card-title p-2 display-4">
                 {{plan.planName}}
             </div>
             <div class="card-body p-1">
-                <b>Plan Area: </b><p>{{plan.planArea}}</p>
-                <b>Average Premium: </b><p>{{plan.averagePremium|currency}}</p>
-                <b>Maximum Coverage: </b><p>{{plan.maximumCoverage|currency}}</p>
-                <button class="btn btn-success rounded" [routerLink]="'/planDetails/'+plan.planId">See Plans</button>
+                <p><b>Plan Area: </b>{{plan.planArea}}</p>
+                <p><b>Average Premium: </b>{{plan.averagePremium|currency}}</p>
+                <p><b>Maximum Coverage: </b>{{plan.maximumCoverage|currency}}</p>
+                <button class="btn btn-success rounded-circle shadow" [routerLink]="'/planDetails/'+plan.planId">
+                    <span class="material-symbols-outlined mt-1">
+                        info
+                    </span>
+                </button>
+                <button class="btn btn-warning rounded-circle shadow mx-3" [routerLink]="'/planDetails/'+plan.planId">
+                    <span class="material-symbols-outlined mt-1">
+                        query_stats
+                        </span>
+                </button>
+
             </div>
         </div>
     </div>
 </div>
-
-
-    
