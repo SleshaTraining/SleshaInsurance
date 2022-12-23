@@ -1,7 +1,10 @@
 package com.slesha.planms.service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+
+import javax.annotation.PostConstruct;
 
 import com.slesha.planms.dto.EnrollRequest;
 import com.slesha.planms.entity.InsurancePlan;
@@ -75,6 +78,22 @@ public class InsurancePlanService {
             return upRepo.findByEmailId(up.getUser().getEmailId());
             
 
+    }
+
+
+    @PostConstruct
+    public void setup(){
+            List<InsurancePlan> plans = repo.findAll();
+            if(plans.size()==0){
+                InsurancePlan disability= new InsurancePlan(null, "Disability Insurance", "Health", 250, 100000);
+                InsurancePlan health= new InsurancePlan(null, "Health Insurance", "Health", 150, 200000);
+                InsurancePlan life= new InsurancePlan(null, "Life Insurance", "Health", 350, 400000);
+                InsurancePlan auto= new InsurancePlan(null, "Auto Insurance", "Auto", 150, 100000);
+                InsurancePlan home= new InsurancePlan(null, "Home Insurance", "Home", 350, 1000000);
+                InsurancePlan rent= new InsurancePlan(null, "Renters Insurance", "Home", 50, 10000);
+                repo.saveAll(Arrays.asList(disability,health,life,auto,home,rent));
+
+            }
     }
 
     
