@@ -1,2 +1,4 @@
 /.m2
-/.mysql
+/.mysql/auto.cnf
+/.mysql/ib_buffer_pool
+/.mysql/mysql.sock
