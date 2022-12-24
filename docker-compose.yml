@@ -79,6 +79,7 @@ services:
     depends_on:
       - insurancedb
     build: ./services/planms
+    image: viggy6/sleshainsurance-planms
     restart: on-failure
     ports:
       - 8889:8080
