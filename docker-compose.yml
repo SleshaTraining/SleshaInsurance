@@ -2,6 +2,7 @@ version: "3.8"
 services:
   insurancedb:
     image: mysql:5.7
+    container_name: db
     restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=my-secret-pw
@@ -13,7 +14,7 @@ services:
     networks:
       - sleshainsnetwork
   rediscache:
-    container_name: rediscache
+    container_name: cache
     depends_on:
       - insurancedb
     build: ./redis
