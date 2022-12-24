@@ -27,7 +27,7 @@ services:
     build: ./redis
     restart: on-failure
     ports:
-      - 2222:6379
+      - 2226:6379
     networks:
       - sleshainsnetwork
   userms:
