@@ -13,6 +13,11 @@ services:
       - .mysql:/var/lib/mysql
     networks:
       - sleshainsnetwork
+  reverseproxy:
+    container_name: proxy
+    build: ./reverseproxy
+    ports:
+      -3333:80
   rediscache:
     container_name: cache
     depends_on:
