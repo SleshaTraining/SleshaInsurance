@@ -7,7 +7,7 @@ phases:
  build:
    commands:
      - echo Convert Compose File
-     - docker-compose -f docker-compose.prod.yml convert > cloudformation.yml
+     - docker-compose -f docker-compose.prod.yml convert > template.yml
 artifacts:
   files:
-    - cloudformation.yml
+    - template.yml
