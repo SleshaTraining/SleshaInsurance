@@ -7,4 +7,3 @@ phases:
  build:
    commands:
      - echo Convert Compose File
-     - /usr/local/bin/docker-compose -f docker-compose.prod.yml up
