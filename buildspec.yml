@@ -1,12 +1,15 @@
 version: 0.2
 phases:
  install:
+   runtime-versions:
+      docker: 18
    commands:
      - mv /usr/local/bin/docker /usr/bin/docker
      - curl -L https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
+ build:
+   commands:
      - echo Convert Compose File
      - docker compose convert > cloudformation.yml
-     
 artifacts:
   files:
     - cloudformation.yml
