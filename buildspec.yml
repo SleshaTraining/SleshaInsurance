@@ -3,11 +3,11 @@ phases:
  install:
    commands:
      - mv /usr/local/bin/docker /usr/bin/docker
-     - curl -L https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
+     - sudo apt-get install docker-compose-plugin
  build:
    commands:
      - echo Convert Compose File
-     - docker --debug compose convert > cloudformation.yml
+     - docker compose convert > cloudformation.yml
 artifacts:
   files:
     - cloudformation.yml
