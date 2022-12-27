@@ -4,9 +4,12 @@ phases:
    commands:
      - mv /usr/local/bin/docker /usr/bin/docker
      - curl -L https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
+     - docker context create ecs myecscontext
+     - docker context use myecscontext
  build:
    commands:
      - echo Convert Compose File
+     - docker-compose -f docker-compose.prod.yml convert> cf.yml
 artifacts:
   files:
-    - template.yml
+    - cf.yml
