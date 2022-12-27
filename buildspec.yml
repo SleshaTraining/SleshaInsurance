@@ -4,7 +4,7 @@ phases:
    commands:
      - mv /usr/local/bin/docker /usr/bin/docker
      - curl -L https://raw.githubusercontent.com/docker/compose-cli/main/scripts/install/install_linux.sh | sh
-     - docker context create ecs myecscontext
+     - docker context create ecs myecscontext --from-env
      - docker context use myecscontext
  build:
    commands:
