@@ -10,6 +10,7 @@ phases:
      - echo Convert Compose File
      - docker context create ecs myecscontext --from-env
      - docker context use myecscontext
+     - docker-compose -f docker-compose.prod.yml convert
      - docker-compose -f docker-compose.prod.yml convert> template.yml
 artifacts:
   files:
