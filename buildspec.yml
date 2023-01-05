@@ -8,14 +8,14 @@ phases:
    commands:
      - echo Logging in to Amazon ECR...
      - echo Creating Docker Compose Context
-     - export AWS_ACCESS_KEY_ID=AKIA2J5ILU42VMVGYFEQ
-     - export AWS_SECRET_ACCESS_KEY=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
+     - export AWS_ACCESS_KEY_ID=
+     - export AWS_SECRET_ACCESS_KEY=
      - docker context create ecs demoecs --from-env
      - docker context use demoecs
  build:
    commands:
      - echo Convert Compose File
-     - docker --debug compose -f docker-compose.prod.yml convert > template.yml
+     - docker --debug compose -f docker-compose.prod.yml convert > cf.yml
 artifacts:
   files:
-    - template.yml
+    - cf.yml
