@@ -16,7 +16,6 @@ services:
   reverseproxy:
     container_name: proxy
     build: ./reverseproxy
-    image: viggy6/sleshainsurance-reverseproxy
     ports:
       - 3333:80
     networks:
@@ -26,7 +25,6 @@ services:
     depends_on:
       - insurancedb
     build: ./redis
-    image: viggy6/sleshainsurance-rediscache
     restart: on-failure
     ports:
       - 2226:6379
@@ -37,7 +35,6 @@ services:
     depends_on:
       - insurancedb
     build: ./services/userms
-    image: viggy6/sleshainsurance-userms
     restart: on-failure
     ports:
       - 8888:8080
@@ -80,9 +77,8 @@ services:
   planms:
     container_name: planms
     depends_on:
-      - insurancedb
+      - zookeeper
     build: ./services/planms
-    image: viggy6/sleshainsurance-planms
     restart: on-failure
     ports:
       - 8889:8080
@@ -107,7 +103,6 @@ services:
     depends_on:
       - planms
     build: ./services/processms
-    image: viggy6/sleshainsurance-processms
     restart: on-failure
     ports:
       - 6666:8080
@@ -128,8 +123,8 @@ services:
     depends_on:
         - userms
         - planms
+        - reverseproxy
     build: ./ui/SleshaInsuranceUI
-    image: viggy6/sleshainsurance-sleshainsuranceui
     restart: on-failure
     ports:
         - 4200:80
