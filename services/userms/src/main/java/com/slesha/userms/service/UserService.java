@@ -21,6 +21,8 @@ public class UserService {
     KafkaTemplate<String,String> template;
 
     public String signup(User user){
+       String m= "+1" + user.getPhone();
+          user.setphone(m);
             repo.save(user);
             return "Signed up succesfully";
     }

@@ -28,6 +28,15 @@ public class User{
     @Column(unique = true)
     private String phone;
     private String password;
+    
+    public String getphone() {
+        return phone;
+      }
+    
+      // Setter
+      public void setphone(String newName) {
+        this.phone = newName;
+      }
 
     
 }

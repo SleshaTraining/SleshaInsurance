@@ -31,6 +31,8 @@ public class UserController{
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody User user){
       try{
+       
+
         String resp=serv.signup(user);
         return new ResponseEntity<String>(resp, HttpStatus.CREATED);
       }
@@ -42,6 +44,7 @@ public class UserController{
     @GetMapping("/")
     public ResponseEntity<List<User>> getUsers(){
         try{
+          System.out.println(serv.getUsers());
             return new ResponseEntity<>(serv.getUsers(),HttpStatus.OK);
         }
         catch(Exception e){
