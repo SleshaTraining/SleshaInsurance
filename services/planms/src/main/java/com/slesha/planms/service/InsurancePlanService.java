@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 
+import com.google.gson.Gson;
 import com.slesha.planms.dto.EnrollRequest;
 import com.slesha.planms.entity.InsurancePlan;
 import com.slesha.planms.entity.User;
@@ -73,10 +74,9 @@ public class InsurancePlanService {
             up.setType(req.getType());
             upRepo.save(up);
             upRepo.flush();
-            kafkaTemplate.send("enroll",req.toString());
+            Gson g = new Gson();
+            kafkaTemplate.send("enroll",g.toJson(req));
             return upRepo.findByEmailId(up.getUser().getEmailId());
-            
-
     }
 
 
